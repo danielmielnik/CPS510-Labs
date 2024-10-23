@@ -36,10 +36,10 @@ CREATE VIEW next_prod_delivery AS
 
 -- Inventory + Sellers | Get all inventory items that are below the minimum stock threshold
 CREATE VIEW needs_restocking AS
-    SELECT i.seller_id, i.product_id, s.seller_name, p.product_name, i.in_stock, i.min_stock_level
+    SELECT i.product_id, s.seller_name, p.product_name, i.in_stock, i.min_stock_level
     FROM Inventory i
-    JOIN Sellers s ON i.seller_id = s.seller_id
     JOIN Products p ON p.product_id = i.product_id
+    JOIN Sellers s ON p.seller_id = s.seller_id
     WHERE i.in_stock < i.min_stock_level
     ORDER BY i.product_id ASC;
 

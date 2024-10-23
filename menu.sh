@@ -12,10 +12,11 @@ MainMenu()
 		echo " $IS_SELECTEDM M) View Manual"
 		echo " "
 		echo " $IS_SELECTED1 1) Drop Tables"
-		echo " $IS_SELECTED2 2) Create Tables"
-		echo " $IS_SELECTED3 3) Populate Tables"
-		echo " $IS_SELECTED4 4) Create Views"
-		echo " $IS_SELECTED4 5) Query Tables"
+		echo " $IS_SELECTED4 2) Drop Views"
+		echo " $IS_SELECTED2 3) Create Tables"
+		echo " $IS_SELECTED3 4) Populate Tables"
+		echo " $IS_SELECTED4 5) Create Views"
+		echo " $IS_SELECTED4 6) Query Tables"
 		echo " "
 		echo " $IS_SELECTEDX X) Force/Stop/Kill Oracle DB"
 		echo " "
@@ -34,21 +35,26 @@ MainMenu()
 			Pause
 
 		elif [ "$CHOICE" == "2" ]
+                then
+                        bash drop_views.sh
+                        Pause
+
+		elif [ "$CHOICE" == "3" ]
 		then
 			bash create_tables.sh
 			Pause
 
-		elif [ "$CHOICE" == "3" ]
+		elif [ "$CHOICE" == "4" ]
 		then
 			bash populate_tables.sh
 			Pause
 
-		elif [ "$CHOICE" == "4" ]
+		elif [ "$CHOICE" == "5" ]
 		then
-			bash view_tables.sh
+			bash create_views.sh
 			Pause
 
-		elif [ "$CHOICE" == "5" ]
+		elif [ "$CHOICE" == "6" ]
                 then
                         bash queries.sh
                         Pause
@@ -63,6 +69,10 @@ MainMenu()
 #--COMMENTS BLOCK--
 # Main Program
 #--COMMENTS BLOCK--
+Pause() {
+    read -p "Press [Enter] key to continue..."
+}
+
 ProgramStart()
 {
 	StartMessage
