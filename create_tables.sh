@@ -1,6 +1,6 @@
 #!/bin/sh
-#export LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
-sqlplus64 "username/password@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(Host=oracle.scs.ryerson.c)(Port=1521))(CONNECT_DATA=(SID=orcl)))" <<EOF
+#export LD_LIBRARY_PATH=/usr/lib/oracle/12c/client64/lib
+sqlplus64 "dmielnik/11128927@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(Host=oracle12c.scs.ryerson.ca)(Port=1521))(CONNECT_DATA=(SID=orcl12c)))" <<EOF
 
 CREATE TABLE Customers (
     customer_id INT PRIMARY KEY,
@@ -24,7 +24,7 @@ CREATE TABLE Sellers (
 );
 
 CREATE TABLE Products (
-    product_id VARCHAR(10) UNIQUE,
+    product_id INT UNIQUE,
     product_name VARCHAR(100) NOT NULL,
     product_description VARCHAR(1000),
     product_price FLOAT DEFAULT 0.00,
